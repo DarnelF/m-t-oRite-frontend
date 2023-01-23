@@ -2,6 +2,7 @@ import styles from "../styles/Home.module.css";
 import City from "./city";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 function Home() {
   const [cities, setCities] = useState([
@@ -21,7 +22,9 @@ function Home() {
           <FontAwesomeIcon icon={faUser} />
         </div>
         <div className={styles.container}>
-          <City></City>
+          {cities.map((city, i) => {
+            return <City key={i} cityName={city.cityName}></City>;
+          })}
         </div>
       </main>
     </div>
