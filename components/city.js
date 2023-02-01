@@ -1,36 +1,48 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/city.module.css";
+import { GoogleMap, Marker } from "react-google-maps";
+import Map from "./map";
 
-function City({ cityName }) {
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
+function City({ cityName, description, main, tempsMin, tempsMax, lat, lon }) {
+  function kelvinToCelsius(kelvin) {
+    return kelvin - 273.15;
+  }
 
   useEffect(() => {
-    fetch("http://localhost:3000/weather", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cityName: cityName }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.result) {
-          setWeatherData(data.data);
-          console.log(data);
-        } else {
-          setError(data.error);
-        }
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-  }, [cityName]);
+    console.log("local :", lat, lon);
+  }, []);
 
   return (
     <div>
       <main className={styles.cardContainer}>
         <span>{cityName}</span>
-        {weatherData && <div>{/* afficher les données météo ici */}</div>}
-        {error && <div>{error}</div>}
+        <Map latitude={lat} longitude={lon}></Map>
+        <img src={`${main}.png`} alt={`${main} icon`} />
+        <div className={styles.description}>{description}</div>
+        <div className={styles.tempContainer}>
+          <span
+            className={`${styles.temp} ${
+              kelvinToCelsius(tempsMin) < 15
+                ? styles.cold
+                : kelvinToCelsius(tempsMin) > 25
+                ? styles.hot
+                : styles.warm
+            }`}
+          >
+            {kelvinToCelsius(tempsMin).toFixed(0)}°C
+          </span>
+          <span
+            className={`${styles.temp} ${
+              kelvinToCelsius(tempsMax) < 15
+                ? styles.cold
+                : kelvinToCelsius(tempsMax) > 25
+                ? styles.hot
+                : styles.warm
+            }`}
+          >
+            {kelvinToCelsius(tempsMax).toFixed(0)}°C
+          </span>
+        </div>
       </main>
     </div>
   );

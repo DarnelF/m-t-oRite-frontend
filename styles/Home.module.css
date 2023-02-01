@@ -39,8 +39,27 @@
 .container {
   height: 90%;
   width: 100%;
-  background: linear-gradient(135deg, #82c4f8, #a4d4f4);
+  background: linear-gradient(135deg, #1c2331, #263238);
+  animation: animateBackground 10s ease-in-out infinite;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@keyframes animateBackground {
+  0% {
+    background: #1c2331;
+  }
+  25% {
+    background: #263238;
+  }
+  50% {
+    background: #0d47a1;
+  }
+  75% {
+    background: #263238;
+  }
+  100% {
+    background: #1c2331;
+  }
 }
