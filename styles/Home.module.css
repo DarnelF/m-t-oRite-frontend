@@ -1,10 +1,13 @@
 .main {
   height: 100vh;
   width: 100vw;
+  background-color: #263238;
+  display: flex;
+  flex-direction: column;
 }
 
 .Navbar {
-  background-color: #3182ce;
+  background-color: rgba(0, 0, 0, 0.3);
   height: 10%;
   width: 100%;
   display: flex;
@@ -12,54 +15,79 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
 .searchInputContainer {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .searchInput {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   border: none;
-  padding-left: 10px;
+  padding-left: 35px;
   width: 20rem;
-  height: 2rem;
+  height: 2.5rem;
   position: relative;
   z-index: 1;
+  font-size: 1.2em;
+  color: #fff;
 }
 
 .searchIcon {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   z-index: 2;
   top: 5px;
   left: 5px;
+  fill: #fff;
 }
 
 .container {
   height: 90%;
   width: 100%;
-  background: linear-gradient(135deg, #1c2331, #263238);
-  animation: animateBackground 10s ease-in-out infinite;
+  background: radial-gradient(circle at center, #0d47a1, #263238);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@keyframes animateBackground {
+.submitButton {
+  background-color: #3182ce;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  box-shadow: 0px 0px 10px #000;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+.submitButton:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 10px #000;
+}
+
+.logo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2em;
+  color: #fff;
+  text-shadow: 0px 0px 10px #000;
+  animation: neonBlink 1s ease-in-out infinite;
+}
+
+@keyframes neonBlink {
   0% {
-    background: #1c2331;
-  }
-  25% {
-    background: #263238;
+    text-shadow: 0px 0px 10px #fff;
   }
   50% {
-    background: #0d47a1;
-  }
-  75% {
-    background: #263238;
+    text-shadow: 0px 0px 10px #000;
   }
   100% {
-    background: #1c2331;
+    text-shadow: 0px 0px 10px #fff;
   }
 }

@@ -41,7 +41,9 @@ function Home() {
               value={newCity}
               onChange={(e) => setNewCity(e.target.value)}
             ></input>
-            <button onClick={addCity}>Add City</button>
+            <button className={styles.submitButton} onClick={addCity}>
+              Add City
+            </button>
           </div>
           <FontAwesomeIcon icon={faUser} />
         </div>
