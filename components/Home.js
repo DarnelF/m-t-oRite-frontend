@@ -3,9 +3,12 @@ import City from "./city";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addCityToStore } from "../reducers/cities";
 
 function Home() {
-  const [cities, setCities] = useState([]);
+  const cities = useSelector((state) => state.cities.value);
+  const dispatch = useDispatch();
   const [newCity, setNewCity] = useState("");
 
   const addCity = async () => {
@@ -19,8 +22,7 @@ function Home() {
       });
       const data = await response.json();
       if (data.result) {
-        setCities([...cities, data.weather]);
-        console.log(data);
+        dispatch(addCityToStore(data.weather));
       } else {
         console.log(data.error);
       }
