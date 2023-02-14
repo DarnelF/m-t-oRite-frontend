@@ -13,7 +13,7 @@ export const citiesSlice = createSlice({
       state.value.push(action.payload);
     },
     removeCityFromStore: (state, action) => {
-      state.value = state.value.filter((city) => city.id !== action.payload);
+      state.value = state.value.filter((city) => city !== action.payload);
     },
   },
 });
