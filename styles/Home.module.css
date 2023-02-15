@@ -153,3 +153,21 @@
   border: none;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  .searchInput {
+    width: 100%;
+  }
+  .logo {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    font-size: 1.2em;
+  }
+}
